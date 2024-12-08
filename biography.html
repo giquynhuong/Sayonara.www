@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhân vật yêu thích</title>
+    <style>
+            /* Đặt nền cho toàn bộ trang */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+  }
+         /* Logo ở góc trên bên trái */
+        .logo {
+            position: absolute;
+            top: 10px; /* Khoảng cách từ trên cùng */
+            left: 10px; /* Khoảng cách từ bên trái */
+            width: 0px; /* Chiều rộng của logo */
+            height: 0px; /* Tự động điều chỉnh chiều cao theo chiều rộng */
+            z-index: 10; /* Đảm bảo logo nằm trên cùng */
+            padding: 0;
+            margin:0;
+        }
+        .logo img {
+            width: 0%;
+            height: 0%;
+        }
+        /* Thanh điều hướng (menu) */
+        nav {
+            background-color: pink; /* Nền màu hồng */
+            color: white; /* Màu chữ trắng */
+            text-align: center;
+            padding: 15px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline; /* Tạo hiệu ứng gạch chân khi di chuột vào */
+        }
+          /* Tiêu đề trang nằm dưới thanh điều hướng */
+          h1 {
+            text-align: center;
+             font-size: 36px;
+            font-weight: bold;
+            color: black; /* Màu chữ đen */
+            margin-top: 20px;
+        } 
+         /* Nội dung chính của trang */
+    .content {
+      background-image: url('images/index3.jpg'); /* Đường dẫn đến hình ảnh */
+      background-size: cover; /* Làm nền phủ đầy toàn bộ vùng chứa */
+      background-position: center; /* Căn giữa hình nền */
+      background-attachment: fixed; /* Giữ hình nền khi cuộn trang */
+      padding: 40px;
+     min-height: 100vh; /* Đảm bảo chiều cao của phần nội dung sẽ bao phủ toàn bộ chiều cao màn hình */
+    position: relative; /* Đảm bảo các phần tử con có thể đặt trong ảnh nền */
+    }
+
+         /* Container chứa hình ảnh và văn bản */
+    .bio-container {
+      display: flex;
+      align-items: center;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 600px; /* Giới hạn chiều rộng tối đa */
+  width: 100%; /* Chiếm 100% chiều rộng, nhưng không vượt quá max-width */
+    }
+
+    /* Hình ảnh */
+    .bio-container img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-right: 20px; 
+  }
+  .bold-text {
+    font-weight: bold;
+}
+  /* Nội dung tiểu sử */
+    .bio-text {
+      flex: 1;
+      font-size: 20px;
+    }
+
+    /* Phong cách cho đoạn văn */
+    p {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+    }
+     #about p {
+    font-size: 20px; /* Tăng kích thước chữ */
+    text-align: justify; /* Căn đều hai bên */
+    line-height: 1.8; /* Tăng khoảng cách dòng */
+    margin: 0 20px; /* Thêm khoảng cách lề hai bên */
+        }
+        .image-container {
+             width: 100%;        /* Đảm bảo phần tử chứa chiếm toàn bộ chiều rộng */
+             height: auto;     /* Chiều cao ảnh tự động điều chỉnh theo tỷ lệ */
+             overflow: hidden;   /* Ẩn phần hình ảnh vượt quá */
+             display: flex;    /* Đảm bảo ảnh được căn chỉnh đúng */
+             justify-content: center; /* Căn giữa ảnh nếu ảnh có kích thước không đủ */
+        }
+        .image-container img {
+  width: 100%;        /* Đảm bảo ảnh chiếm toàn bộ chiều rộng phần tử */
+  height: auto;     /* Chiều cao ảnh tự động điều chỉnh theo tỷ lệ */
+  object-fit: contain; /* Đảm bảo ảnh giữ tỷ lệ mà không bị cắt */
+}
+margin: 0;
+      overflow: hidden; /* Loại bỏ thanh cuộn nếu có */
+    }
+    .video-container {
+      position: fixed;
+      bottom: 20px; /* Cách mép dưới 20px */
+      left: 20px; /* Cách mép trái 20px */
+      width: 150px; /* Kích thước chiều rộng video */
+      height: auto; /* Giữ tỷ lệ video */
+      z-index: 10; /* Đảm bảo video nằm trên các phần tử khác */
+      border: 2px solid #ccc; /* Thêm viền (tùy chọn) */
+      border-radius: 10px; /* Làm bo tròn các góc video */
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ (tùy chọn) */
+    }
+    /* Đảm bảo nội dung trong .content nằm trong ảnh nền */
+.content {
+    background-image: url('images/index3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 40px;
+  min-height: 100vh; /* Đảm bảo chiều cao của phần nội dung sẽ bao phủ toàn bộ chiều cao màn hình */
+    position: relative; /* Đảm bảo các phần tử con có thể đặt trong ảnh nền */
+}
+/* Phần "Tuổi thơ" với nền hồng bán trong suốt */
+#childhood {
+    background-color: 
+    padding: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: none;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px 0;
+    text-align: left; /* Căn trái nội dung */
+}
+
+/* Tiêu đề "Tuổi thơ" với màu chữ đen */
+#childhood strong {
+    font-size: 20px;
+    font-weight: bold;
+ color: #FF1493; /* Màu chữ hồng đậm */
+}
+
+/* Văn bản phần "Tuổi thơ" với màu chữ đen */
+#childhood p {
+    font-size: 20px;
+    line-height: 1.6;
+ color: #FFFFFF; /* Màu kem sáng */
+text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Bóng đổ màu đen mờ */
+}
+
+#milestones {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 900px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Định dạng bảng */
+table {
+    width: 100%; /* Chiều rộng toàn bộ */
+    border-collapse: collapse; /* Loại bỏ khoảng cách giữa các đường viền */
+    text-align: left; /* Căn trái văn bản */
+    margin: 20px 0; /* Thêm khoảng cách trên dưới */
+}
+
+/* Dòng tiêu đề */
+table th {
+    background-color: #FFB6C1; /* Nền hồng nhạt */
+    font-weight: bold;
+    padding: 10px; /* Khoảng cách nội dung */
+    color: #333; /* Màu chữ đen */
+    border: 1px solid #ddd; /* Đường viền */
+}
+
+/* Dòng dữ liệu */
+table td {
+    padding: 10px; /* Khoảng cách nội dung */
+    border: 1px solid #ddd; /* Đường viền */
+}
+
+/* Hiệu ứng khi di chuột qua dòng dữ liệu */
+table tr:hover {
+    background-color: #f9f9f9; /* Nền xám nhạt */
+}
+
+         /* Footer */
+footer {
+    background: #333;
+    color: white; /* Sửa lại màu chữ thành 'white' */
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+     position: relative; /* Đảm bảo footer nằm dưới nền */
+      z-index: 10; /* Đảm bảo footer không bị ảnh hưởng bởi nền */
+}
+/* Màu chữ kem cho phần "Liên hệ" */
+footer ul li p {
+    color: #FFF8DC; /* Màu kem sáng */
+}
+footer p {
+  margin: 0; /* Đảm bảo không có margin thừa */
+  font-size: 14px; /* Điều chỉnh kích thước chữ */
+}
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="images/logo.jpg" alt="Logo" class="Logo">
+    </div>
+    <!-- Thanh điều hướng -->
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="biography.html">Tiểu sử</a>
+        <a href="achievements.html">Thành tựu và sở thích</a>
+        <a href="https://www.facebook.com/ameest319">Facebook</a>
+        <a href="https://www.instagram.com/ameemee_m?igsh=bGM0d3Y0NHZ0bHM5">Instagram</a>
+        <a href="https://youtube.com/@ameeofficial3930?si=8-ilYbjM9Lv-JvD1">Youtube</a>
+    </nav>
+   <div class="content">
+    <!-- Tiêu đề trang "Nhân vật yêu thích" -->
+   <h1> Tiểu sử của Amee </h1>
+    <!-- Nội dung chính với hình nền -->
+   <div class="bio-container">
+   <!-- Hình ảnh của Amee -->
+    <img src="images/biography.jpg" alt="Amee">
+    <!-- Phần nội dung dưới ảnh -->
+    <div class="bio-text">
+    <section id="about" class="section">
+    <ul>
+         <li><span class="bold-text">Tên thật:</span> Trần Huyền My </li>
+        <li><span class="bold-text">Ngày sinh:</span> 23 tháng 3 năm 2000</li>
+        <li><span class="bold-text">Nơi sinh: </span> Hà Nội, Việt Nam</li>
+        <li><span class="bold-text">Nghệ danh: </span> AMEE</li>
+        <li><span class="bold-text"> Công ty:</span> St.319 Entertainment</li>
+</ul>
+</div>
+</div>
+<section id="childhood" class="section">
+<p><strong>Tuổi thơ:</strong></p>
+<p>Cô là con út trong gia đình và từ khi còn nhỏ, Amee đã thể hiện niềm đam mê với âm nhạc. Ngay từ khi còn bé, Amee đã tham gia các hoạt động văn nghệ ở trường học và sớm bộc lộ khả năng ca hát. Trong suốt thời niên thiếu, Amee được gia đình khuyến khích theo đuổi niềm đam mê âm nhạc. Cô đã học đàn piano và thể hiện được sự tiến bộ nhanh chóng trong âm nhạc.</p>
+<p> <strong> Sự nghiệp ban đầu:</strong> </p>
+   <p> Amee bắt đầu sự nghiệp âm nhạc vào năm 2018 khi cô gia nhập công ty giải trí St.319 Entertainment. Cô phát hành những ca khúc đầu tay như "Anh Nhà Ở Đâu Thế" (2019), một bản hit lớn giúp Amee nổi tiếng nhanh chóng. Ca khúc này thu hút hàng triệu lượt nghe và đã đưa tên tuổi của cô vào làng nhạc Việt.</p>
+</section>
+<section id="milestones">
+    <h2><p><strong>Các cột mốc quan trọng trong sự nghiệp của Amee</strong></p></h2>
+    <table border="1" cellspacing="0" cellpadding="10" style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+    <tr style="background-color: #FFB6C1; font-weight: bold; color: #333;">
+        <th>Thời gian</th>
+        <th>Cột mốc</th>
+        <th>Chi tiết</th>
+    </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2018</td>
+                <td>Bắt đầu sự nghiệp âm nhạc</td>
+                <td>Amee gia nhập St.319 Entertainment, công ty giải trí nổi tiếng ở Việt Nam, để chính thức bắt đầu sự nghiệp âm nhạc.</td>
+            </tr>
+            <tr>
+                <td>2019</td>
+                <td>Ra mắt ca khúc "Anh Nhà Ở Đâu Thế"</td>
+                <td>Bài hát "Anh Nhà Ở Đâu Thế" phát hành vào năm 2019 đã nhanh chóng trở thành hit lớn, đưa tên tuổi của Amee nổi bật trên thị trường âm nhạc Việt Nam.</td>
+            </tr>
+            <tr>
+                <td>2020</td>
+                <td>Phát hành album đầu tay "Đen Đá Không Đường"</td>
+                <td>Amee phát hành album đầu tiên của mình có tên "Đen Đá Không Đường", bao gồm nhiều ca khúc nổi bật như "Sao Anh Chưa Về Nhà" và "Nàng Thơ".</td>
+            </tr>
+            <tr>
+                <td>2021</td>
+                <td>Hợp tác với các nghệ sĩ nổi tiếng</td>
+                <td>Amee hợp tác với nhiều nghệ sĩ khác như Minh Beta, Hoàng Dũng, Hứa Kim Tuyền trong các dự án âm nhạc.</td>
+            </tr>
+            <tr>
+                <td>2022</td>
+                <td>Ra mắt các ca khúc mới</td>
+                <td>Amee tiếp tục phát hành các MV và ca khúc mới, như "Anh Về Nhà Đi" và "Kẻ Cắp Gặp Bà Già", góp phần làm phong phú thêm danh mục âm nhạc của mình.</td>
+            </tr>
+            <tr>
+                <td>2023</td>
+                <td>Đạt thành công quốc tế</td>
+                <td>Amee bắt đầu nhận được sự chú ý từ khán giả quốc tế nhờ vào chất lượng sản phẩm âm nhạc và sự phát triển của mạng xã hội.</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<section id="childhood" class="section">
+    <h2> <p><strong>Liên hệ:</strong></p></h2>
+    <ul>
+       <li><p>Để hợp tác hoặc gửi lời nhắn, hãy liên hệ qua gmail: <a href="mailto: contact@ameeofficial.vn">contact@ameeofficial.vn</a></p></li>
+    </ul>
+</section>
+</section>
+     <footer>
+        &copy; 2024 AMEE Official. All rights reserved.
+    </footer>
+</div>
+</body>
+</html>

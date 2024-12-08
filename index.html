@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhân vật yêu thích</title>
+    <style>
+        /* Cài đặt chung cho trang web */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+         /* Logo ở góc trên bên trái */
+        .logo {
+            position: absolute;
+            top: 10px; /* Khoảng cách từ trên cùng */
+            left: 10px; /* Khoảng cách từ bên trái */
+            width: 0px; /* Chiều rộng của logo */
+            height: 0px; /* Tự động điều chỉnh chiều cao theo chiều rộng */
+            z-index: 10; /* Đảm bảo logo nằm trên cùng */
+            padding: 0;
+            margin:0;
+        }
+        .logo img {
+            width: 0%;
+            height: 0%;
+        }
+        /* Thanh điều hướng (menu) */
+        nav {
+            background-color: pink; /* Nền màu hồng */
+            color: white; /* Màu chữ trắng */
+            text-align: center;
+            padding: 15px 0;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline; /* Tạo hiệu ứng gạch chân khi di chuột vào */
+        }
+          /* Tiêu đề trang nằm dưới thanh điều hướng */
+          h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: black; /* Màu chữ đen */
+            margin-top: 20px;
+        } 
+   /* Phần hình ảnh và tiêu đề */
+        .hero-section {
+            position: relative;
+           background-image: url('images/index.jpg'); /* Thay thế bằng ảnh từ tệp trong thư mục */
+            background-size: cover; /* Đảm bảo ảnh phủ đầy div */
+            background-position: center; /* Căn giữa ảnh trong div */
+            background-repeat: no-repeat; /* Không lặp lại ảnh */
+            height: 600px; /* Chiều cao cố định cho phần ảnh */
+        }
+         /* Tiêu đề "AMEE" nằm trên ảnh bên phải*/
+        .amee-title {
+            position: absolute;
+            right: 20px; /* Đặt tiêu đề cách lề phải một chút */
+            bottom: 10px; /* Đặt tiêu đề cách đáy một chút */
+            font-size: 96px; /* Kích thước chữ lớn */
+            font-family: 'Helvetica', 'Arial', sans-serif; /* Kiểu chữ cao và mỏng */
+            font-weight: 100; /* Mỏng */
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng cho chữ */
+            letter-spacing: 0.3em;
+        }
+        /* Phần nội dung dưới ảnh */
+        #about p {
+    font-size: 20px; /* Tăng kích thước chữ */
+    text-align: justify; /* Căn đều hai bên */
+    line-height: 1.8; /* Tăng khoảng cách dòng */
+    margin: 0 20px; /* Thêm khoảng cách lề hai bên */
+        }
+        .image-container {
+             width: 100%;        /* Đảm bảo phần tử chứa chiếm toàn bộ chiều rộng */
+             height: auto;     /* Chiều cao ảnh tự động điều chỉnh theo tỷ lệ */
+             overflow: hidden;   /* Ẩn phần hình ảnh vượt quá */
+             display: flex;    /* Đảm bảo ảnh được căn chỉnh đúng */
+             justify-content: center; /* Căn giữa ảnh nếu ảnh có kích thước không đủ */
+        }
+        .image-container img {
+  width: 100%;        /* Đảm bảo ảnh chiếm toàn bộ chiều rộng phần tử */
+  height: auto;     /* Chiều cao ảnh tự động điều chỉnh theo tỷ lệ */
+  object-fit: contain; /* Đảm bảo ảnh giữ tỷ lệ mà không bị cắt */
+}
+margin: 0;
+      overflow: hidden; /* Loại bỏ thanh cuộn nếu có */
+    }
+    .video-container {
+      position: fixed;
+      bottom: 20px; /* Cách mép dưới 20px */
+      left: 20px; /* Cách mép trái 20px */
+      width: 150px; /* Kích thước chiều rộng video */
+      height: auto; /* Giữ tỷ lệ video */
+      z-index: 10; /* Đảm bảo video nằm trên các phần tử khác */
+      border: 2px solid #ccc; /* Thêm viền (tùy chọn) */
+      border-radius: 10px; /* Làm bo tròn các góc video */
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Thêm bóng đổ (tùy chọn) */
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Giữ tỷ lệ khung hình video */
+    }
+        h2 {
+            left: 30px; /*Đặt tiêu đề cách lề trái*/
+        }
+        /* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+footer p {
+  margin: 0; /* Đảm bảo không có margin thừa */
+  font-size: 14px; /* Điều chỉnh kích thước chữ */
+}
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <div class="navbar">
+        <a href="sayonara.html">
+        <img src="images/logo.jpg" alt="Logo" class="Logo">
+    </div>
+    <!-- Thanh điều hướng -->
+    <nav>
+        <a href="index.html">Trang chủ</a>
+        <a href="biography.html">Tiểu sử</a>
+        <a href="achievements_hobbies.html">Thành tựu và sở thích</a>
+        <a href="https://www.facebook.com/ameest319">Facebook</a>
+        <a href="https://www.instagram.com/ameemee_m?igsh=bGM0d3Y0NHZ0bHM5">Instagram</a>
+        <a href="https://youtube.com/@ameeofficial3930?si=8-ilYbjM9Lv-JvD1">Youtube</a>
+    </nav>
+
+    <!-- Tiêu đề trang "Nhân vật yêu thích" -->
+    <h1>Nhân vật yêu thích</h1>
+    <!-- Phần hình ảnh và tiêu đề -->
+    <div class="hero-section">
+        <div class="amee-title"> AMEE</div>
+    </div>
+    <!-- Phần nội dung dưới ảnh -->
+    <section id="about" class="section">
+        <ul>
+            <li><p>Amee tên thật là Trần Huyền My, sinh năm 2000. Cô nàng được biết đến là một ca sĩ trẻ. Với giọng hát trong trẻ, trẻ trung và rât dễ thương đã được rất nhiều các bạn trẻ yêu thích. Không chỉ riêng về giọng hát Amee còn sở hữu khuôn mặt xinh xắn, trong sáng và mũi cao và nước da trắng hồng. Hiện tại cô nàng đang làm việc dưới sự quản lý của Công ty TNHH Giải Trí & Truyền thông St.319 (St.319 Entertainment).</p></li>
+        <li><p> Bước chân vào làng nhạc từ năm 2019, cô nhanh chóng gây ấn tượng với loạt hit đình đám như "Anh Nhà Ở Đâu Thế", "Đen Đá Không Đường", và "Yêu Thì Yêu Không Yêu Thì Yêu". Với chất giọng trong trẻo, phong cách âm nhạc tươi mới cùng hình ảnh trẻ trung, AMEE đã trở thành biểu tượng cho thế hệ trẻ yêu âm nhạc và là một trong những ca sĩ nổi bật của thế hệ Gen Z tại Việt Nam. </p></li></ul>
+        <div class="image-container">
+        <img src="images/index1.jpg" alt="Hình ảnh của Amee">
+        </div>
+        <ul>
+        <li><p> Ngoài sự nghiệp âm nhạc, AMEE cũng thể hiện một lối sống lành mạnh, tích cực, không chạy theo những ồn ào và scandal. Thái độ làm việc chuyên nghiệp, sự tập trung vào công việc cũng là một yếu tố quan trọng khiến cô nhận được sự ngưỡng mộ từ đồng nghiệp và người hâm mộ. Tất cả những yếu tố này tạo nên một hình ảnh Amee không chỉ là một ca sĩ mà còn là một biểu tượng âm nhạc của thế hệ mới tại Việt Nam, từ đó khiến cô trở thành một trong những thần tượng mà em rất ngưỡng mộ.</p></li>
+        <li> <p>Ca khúc "Hai Mươi Hai" của AMEE là một bài hát trẻ trung, sôi động, và mang năng lượng tích cực, được phát hành vào năm 2022. Đây là một sản phẩm âm nhạc đánh dấu cột mốc tuổi 22 của AMEE, một độ tuổi đầy mơ mộng, nhiệt huyết và tràn đầy niềm tin vào cuộc sống.</p></li>
+    </ul>
+        </section>
+        <div class="video-container">
+            <video width="640" height="360" controls>
+  <source src="images/amee.mp4" type="video/mp4">
+  </video>
+</div>
+</div>
+      <section id="contact" class="section">
+        <h2> Liên hệ:</h2>
+        <ul>
+       <li>
+        <p><span style="font-size: 1.2em;">Để hợp tác hoặc gửi lời nhắn, hãy liên hệ qua gmail: </span>
+      <a href="mailto:contact@ameeofficial.vn">contact@ameeofficial.vn</a>
+  </p>
+</li>
+    </section>
+</ul>
+     <footer>
+        <p>&copy; 2024 AMEE Official. All rights reserved.</p>
+    </footer>
+</body>
+</html>
